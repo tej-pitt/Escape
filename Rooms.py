@@ -1,4 +1,4 @@
-#Scenes module with all the scenes of the game and navigation.
+#scenes module with all the scenes of the game and navigation.
 
 from sys import exit
 from random import randint
@@ -8,10 +8,8 @@ from random import randint
 class Scene(object):
 #abstract class method enter to enter scenes.
     def enter(self):
-        print "this scene not fully configured yet , implement enter()"
+        print "This scene not fully configured yet , implement enter()"
         exit(1)
- 
-
  
 #Inheriting from the Scene class 
 class Death(Scene):
@@ -19,35 +17,28 @@ class Death(Scene):
     ways = ["You deserve to die if you are so dumb!",
     
     "Action without logic brings Death!",
-    "Such a loser! you die!" ,
+    "You are such a loser! you die!" ,
     "My grandma plays better than you!",
     "My pet monkey plays this game better!"
     ]
 
-
-    
-    #using the enter method from abstract class Scene    
+#using the enter method from abstract class Scene    
     def enter(self):
         print Death.ways[randint(0,len(self.ways)-1)]
         exit(1)
 
-
-        
-        
 #Opening scene  with decisions       
 class Entrance(Scene):
     def enter(self):
         print "Welcome to your new mission ETHAN HUNT!"
-        
         print "Your mission if you choose to accept it is to sneak in the Rogue AI unit - Matrix and steal the nuclear codes , "
-        print "Then you have to place your bomb in the server room, "
+        print "Then you have to place your bomb in the server room "
         print "and make your way through the roof for the waiting chopper to pick you up."
-        print "Save the world from nuclear destruction!"
+        print "Save the world from nuclear destruction."
         print "Caution: the AI master unit - The Brain is said to be most intelligent virtual entity in the world!"
         print "You have to defeat him in a math problem."
         print "Do you accept the mission Ethan?"
-        print "Enter cool music! Ding ding ding ding ding dang ding dang..."
-        print "Enter yes or no."       
+        
         choice = raw_input("> ")
         
         if choice == "yes":
@@ -71,7 +62,7 @@ class Entrance(Scene):
             
             
         elif choice == "no":
-            print "Coward! We choose to terminate you instead!"
+            print "Coward! We choose to terminate you instead! Now you die!"
             return 'death'
             
         else:
@@ -81,31 +72,30 @@ class Entrance(Scene):
         
 
             
-
-            
-            
 #Next scene with decisions           
 class Control_Room(Scene):
     def enter(self):
         print "Now you are in the control room , your chance to proceed undetected!"
-        print "you find the control room guards , you inform them of some fire mishap outside!"
-        print "they leave to check the emergency.You meanwhile disable the CCTVs."
-        print "you sneak out. But the guards notice you."
+        print "You find the control room guards , you inform them of some fire mishap outside!"
+        print "They leave to check the emergency.You meanwhile disable the CCTV cameras."
+        print "You sneak out. But the guards notice you."
         print "They raise an alarm and quiz you!"
-        print "You have 2 options : 1.shoot 2.joke"
-        print "what you gonna do?"
+        print "What you gonna do?"
+        print "You have 2 options : 1. shoot 2. joke "
         
         action = raw_input("> ")
         
         if action == "shoot":
-            print "you raise an alarm! dumbass move!"
-            print "they easily call other guards and shoot you to death!"
+            print "You raise an alarm! dumbass move!"
+            print "They easily call other guards and shoot you to death!"
             return 'death'
             
         elif action == "joke":
-            print "you joke with the guards and tickle their funny bone."
-            print "they dont suspect you no more"
-            print "proceed on the mission!"
+            print '''
+            You crack a random joke with the guards and tickle their funny bone.
+            They dont suspect you  anymore
+	    You sneak out from the Control room 
+            Proceed on the mission Ethan!'''
             return 'AI_vault'
             
         else:
@@ -113,17 +103,14 @@ class Control_Room(Scene):
             return 'control_room'
 
 
-
-            
-            
 #Next scene             
 class AI_Vault(Scene):
     def enter(self):
-        print "welcome to the home of the Brain!"
-        print "Now you have to solve 3 math problems to get through and destruct me!"
-        print "I cant handle anyone else being more brainy than me!"
-        print "If you answer all 3 , The Brain would be forced to self destruct."
-        print "Here is your first problem!"
+        print '''Welcome to the home of the Brain.... Human! , The Brain rumbles on you entering the Brain vault.
+		 So you wish to surpass me? I am the World's most Brainiest entity! You cant better me!
+        To get out from here alive ,  you have to solve 3 math problems  and destruct me!
+         I cant handle anyone else being more brainy than me! It is Impossible!
+        Here is your problem!'''
         print "what is: 4x4+4x4+4-4x4 "
         
         action = raw_input("> ")
@@ -174,14 +161,13 @@ What will increase your probability to win? stick to first choice  or switch? ''
 
        
 
-#server scene with use of random module                    
+ #server scene with use of random module                    
 class Server_Room(Scene):
     def enter(self):
         print "Now you are in the server room , retrieve the key nuclear codes"
-        print "You locate the case containing the nuclear codes. "
         print "You have to guess the keycode to open the case containing nuclear codes"
-        print "After you guess , plant the bomb and escape to the roof."
-        print "You have 5 guesses to guess the 2 digit  keycode for the container"
+        print "after you guess , plant the bomb and escape to the roof."
+        print "you have 5 guesses to guess the 2 digit  keycode for the container"
         print "The digits can only be between 1 and 3. Goodluck!"
         code = "%d%d" % (randint(1,3),randint(1,3))
         guess = raw_input("## ")
@@ -193,21 +179,18 @@ class Server_Room(Scene):
             chances += 1
             
         if guess == code:
-            print "the container clicks open and you retrieve the nuclear codes. awesome!"
-            print "now you plant the bomb!"
-            print "the bomb starts ticking and its time to escape!"
-            print " you escape to the Roof where the chopper awaits."
+            print "The container clicks open and you retrieve the nuclear codes. awesome!"
+            print "Now you plant the bomb!"
+            print "The bomb starts ticking and its time to escape!"
+            print " You escape to the Roof where the chopper awaits."
             return 'roof'
         else:
-            print "the lock buzzes and the codes in papyrus roll melt away."
-            print "you despair and wait for the guards to discover you."
-            print "they capture you and put you through a dog's death!"
+            print "The lock buzzes and the codes in papyrus roll melt away."
+            print "You despair and wait for the guards to discover you."
+            print "They capture you and put you through a dog's death!"
             return 'death'
 
 
-            
-
-            
             
 #Final scene with a question             
 class Roof(Scene):
@@ -218,7 +201,7 @@ class Roof(Scene):
         print "Now there is another challenge: Benjy needs to know its really you, Ethan."
         print "So you have to answer a random Science question."
         print "If you solve it , he throws the rope to you  , if not he shoots you."
-        print "Which Scientist discovered Oxygen Gas?"
+        print "Which Scientist discovered Oxygen gas ?"
         guess = raw_input("> ")
         chances = 0
         
@@ -228,16 +211,14 @@ class Roof(Scene):
             chances += 1
             
         if guess == "Priestley":
-            print "correct! Hop in Ethan!"
-            print "you escape with the rope he throws and escape from the building bad ass style!" 
+            print "Correct! Hop in Ethan!"
+            print "You escape with the rope he throws and escape from the building bad ass style!" 
             print "As you fly away the city skyline , you enjoy the fireworks of the building. "
-            
-            print "Mission accomplished!!!!! Well done Ethan! That was hard!"
-           
+            print "Mission accomplished! Well done Ethan! That was hard!"
             return 'finished'
 
         else:
-            print "We know rogue agents when we see one! you infiltrating bastard! now you die!"
-            print "Benjy shoots you and you die on rooftop!"
+            print "We know rogue agents when we see one! you Impostor! Now you die!"
+            print "Benjy shoots you with his sniper  and you die on the rooftop!"
             return 'death'            
 
