@@ -8,7 +8,7 @@ from random import randint
 class Scene(object):
 #abstract class method enter to enter scenes.
     def enter(self):
-        print "this scene not fully configured yet , implement enter()"
+        print "This scene not fully configured yet , implement enter()"
         exit(1)
  
 #Inheriting from the Scene class 
@@ -17,9 +17,9 @@ class Death(Scene):
     ways = ["You deserve to die if you are so dumb!",
     
     "Action without logic brings Death!",
-    "such a loser! you die!" ,
-    "my grandma plays better than you!",
-    "my pet monkey plays this game better!"
+    "You are such a loser! you die!" ,
+    "My grandma plays better than you!",
+    "My pet monkey plays this game better!"
     ]
 
 #using the enter method from abstract class Scene    
@@ -37,7 +37,7 @@ class Entrance(Scene):
         print "Save the world from nuclear destruction."
         print "Caution: the AI master unit - The Brain is said to be most intelligent virtual entity in the world!"
         print "You have to defeat him in a math problem."
-        print "do you accept the mission Ethan?"
+        print "Do you accept the mission Ethan?"
         
         choice = raw_input("> ")
         
@@ -76,25 +76,26 @@ class Entrance(Scene):
 class Control_Room(Scene):
     def enter(self):
         print "Now you are in the control room , your chance to proceed undetected!"
-        print "you find the control room guards , you inform them of some fire mishap outside!"
-        print "they leave to check the emergency.You meanwhile disable the CCTV cameras."
+        print "You find the control room guards , you inform them of some fire mishap outside!"
+        print "They leave to check the emergency.You meanwhile disable the CCTV cameras."
         print "You sneak out. But the guards notice you."
         print "They raise an alarm and quiz you!"
-        print "what you gonna do?"
+        print "What you gonna do?"
         print "You have 2 options : 1. shoot 2. joke "
         
         action = raw_input("> ")
         
         if action == "shoot":
-            print "you raise an alarm! dumbass move!"
-            print "they easily call other guards and shoot you to death!"
+            print "You raise an alarm! dumbass move!"
+            print "They easily call other guards and shoot you to death!"
             return 'death'
             
         elif action == "joke":
-            print '''you crack a random joke with the guards and tickle their funny bone.
-             they dont suspect you  anymore
-	          You sneak out from the Control room 
-              Proceed on the mission Ethan!'''
+            print '''
+            You crack a random joke with the guards and tickle their funny bone.
+            They dont suspect you  anymore
+	    You sneak out from the Control room 
+            Proceed on the mission Ethan!'''
             return 'AI_vault'
             
         else:
@@ -167,7 +168,7 @@ class Server_Room(Scene):
         print "You have to guess the keycode to open the case containing nuclear codes"
         print "after you guess , plant the bomb and escape to the roof."
         print "you have 5 guesses to guess the 2 digit  keycode for the container"
-        print "the digits can only be between 1 and 3. Goodluck!"
+        print "The digits can only be between 1 and 3. Goodluck!"
         code = "%d%d" % (randint(1,3),randint(1,3))
         guess = raw_input("## ")
         chances = 0
@@ -178,15 +179,15 @@ class Server_Room(Scene):
             chances += 1
             
         if guess == code:
-            print "the container clicks open and you retrieve the nuclear codes. awesome!"
-            print "now you plant the bomb!"
-            print "the bomb starts ticking and its time to escape!"
-            print " you escape to the Roof where the chopper awaits."
+            print "The container clicks open and you retrieve the nuclear codes. awesome!"
+            print "Now you plant the bomb!"
+            print "The bomb starts ticking and its time to escape!"
+            print " You escape to the Roof where the chopper awaits."
             return 'roof'
         else:
-            print "the lock buzzes and the codes in papyrus roll melt away."
-            print "you despair and wait for the guards to discover you."
-            print "they capture you and put you through a dog's death!"
+            print "The lock buzzes and the codes in papyrus roll melt away."
+            print "You despair and wait for the guards to discover you."
+            print "They capture you and put you through a dog's death!"
             return 'death'
 
 
@@ -210,8 +211,8 @@ class Roof(Scene):
             chances += 1
             
         if guess == "Priestley":
-            print "correct! Hop in Ethan!"
-            print "you escape with the rope he throws and escape from the building bad ass style!" 
+            print "Correct! Hop in Ethan!"
+            print "You escape with the rope he throws and escape from the building bad ass style!" 
             print "As you fly away the city skyline , you enjoy the fireworks of the building. "
             print "Mission accomplished! Well done Ethan! That was hard!"
             return 'finished'
